@@ -1,7 +1,8 @@
 import React from "react";
-import { testimonials } from "../components/Testimonials/testimonials";
-import TestimonialCard from "../components/Testimonials/TestimonialCard";
+
 import { motion } from "framer-motion";
+import TestimonialCard from "../components/Testimonials/TestimonialCard";
+import { testimonials } from "../components/Testimonials/testimonials";
 
 const TestimonialsSection = () => {
   return (
