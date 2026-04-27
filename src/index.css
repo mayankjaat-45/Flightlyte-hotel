@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Oswald:wght@200..700&family=Titan+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* ===================== */
+  /* Fonts */
+  /* ===================== */
+
+  --font-body: "Oswald", sans-serif;          /* Body text */
+  --font-heading: "fugaz One", sans-serif;    /* Section headings */
+  --font-logo: "Titan One", sans-serif;        /* Logo / brand */
+  --font-hero: "Anton", sans-serif;            /* Hero headlines */
+
+  /* ===================== */
+  /* Dark Backgrounds */
+  /* ===================== */
+
+  --bg-main: #0b0f14;        /* Main app background */
+  --bg-card: #121821;        /* Cards */
+  --bg-primary: #1c1c1a;
+  --bg-secondary: #181818;
+  --bg-via: #242420;
+
+  /* ===================== */
+  /* Dark Gold Palette */
+  /* ===================== */
+
+  --gold-dark: #b08d3a;     /* Logo + H1 */
+  --gold-main: #c9a24d;     /* Headings */
+  --gold-soft: #d6b96c;     /* Sub-headings */
+  --gold-shadow: #8f6b1f;   /* Depth / gradient end */
+
+  /* Gold Gradient */
+  --color-start: #f8de82;
+  --color-end: #eaa82a;
+
+  /* ===================== */
+  /* Text */
+  /* ===================== */
+
+  --text-main: #ffffff;
+  --text-muted: #a0a6b0;
+
+  /* ===================== */
+  /* Borders & Effects */
+  /* ===================== */
+
+  --border-soft: rgba(255, 255, 255, 0.08);
+
+  /* ===================== */
+  /* Background Images */
+  /* ===================== */
+
+  --bg-hero: url("/images/HeroImage.jpg");
+  --bg-register: url("/images/Register.jpg");
+  --bg-login: url("/images/login.jpg");
+}
+
+
