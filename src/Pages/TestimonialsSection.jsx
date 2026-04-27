@@ -1,6 +1,6 @@
 import React from "react";
-import { testimonials } from "../components/Testimonials/testimonials.js";
-import TestimonialCard from "../components/Testimonials/TestimonialCard.jsx";
+import { testimonials } from "../components/Testimonials/testimonials";
+import TestimonialCard from "../components/Testimonials/TestimonialCard";
 import { motion } from "framer-motion";
 
 const TestimonialsSection = () => {
