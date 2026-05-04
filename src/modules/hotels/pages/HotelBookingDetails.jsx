@@ -129,12 +129,28 @@ const HotelBookingDetails = () => {
             {/* Guests */}
             <div className="mt-4">
               <h4 className="text-yellow-200 text-sm mb-1">Guests</h4>
-              {room.HotelPassenger?.map((p, i) => (
-                <div key={i} className="text-sm">
-                  {p.Title} {p.FirstName} {p.LastName} ({p.Age})
-                  {p.LeadPassenger && " • Lead"}
-                </div>
-              ))}
+              {room.HotelPassenger?.map((p, i) => {
+                const paxType = Number(p.PaxType);
+                const isChild = paxType === 2;
+
+                return (
+                  <div
+                    key={i}
+                    className="text-sm flex justify-between border-b border-gray-800 py-2"
+                  >
+                    <span>
+                      {p.Title} {p.FirstName} {p.LastName}
+                      {p.LeadPassenger && " • Lead"}
+                    </span>
+
+                    <span
+                      className={isChild ? "text-yellow-300" : "text-gray-400"}
+                    >
+                      {isChild ? `Child • Age ${p.Age}` : "Adult"}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Room Price */}

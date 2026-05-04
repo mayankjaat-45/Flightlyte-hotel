@@ -40,12 +40,13 @@ const HotelBooking = () => {
   const childCount = typeof guests === "number" ? 0 : guests?.children || 0;
   const totalGuests = adultCount + childCount;
 
-  const childAges =
-    guests?.childAges ||
-    guests?.childrenAges ||
-    guests?.ChildAge ||
-    roomData?.ChildAge ||
-    [];
+  const childAges = Array.isArray(guests?.childAges)
+    ? guests.childAges.map(Number)
+    : Array.isArray(preBook?.childAges)
+      ? preBook.childAges.map(Number)
+      : Array.isArray(roomData?.ChildAge)
+        ? roomData.ChildAge.map(Number)
+        : [];
 
   const [guestList, setGuestList] = useState(
     Array.from({ length: totalGuests }, (_, i) => {
@@ -61,7 +62,7 @@ const HotelBooking = () => {
         Phoneno: "",
         PaxType: isChild ? 2 : 1,
         LeadPassenger: i === 0,
-        Age: isChild ? Number(childAges?.[childIndex] || "") : 30,
+        Age: isChild ? Number(childAges[childIndex]) : 30,
       };
     }),
   );
@@ -147,7 +148,14 @@ const HotelBooking = () => {
         HotelRoomsDetails,
       };
 
-      console.log("FINAL PAYLOAD:", JSON.stringify(finalPayload, null, 2));
+      console.log("BOOKING CHILD AGES:", childAges);
+      console.log(
+        "PASSENGER AGES:",
+        cleanedGuests.map((g) => ({
+          PaxType: g.PaxType,
+          Age: g.Age,
+        })),
+      );
 
       const res = await privateApi.post(
         "/api/hotels/hotels/book/",
@@ -249,11 +257,9 @@ const HotelBooking = () => {
                   <input
                     type="number"
                     placeholder="Child Age"
-                    className="input"
+                    className="input opacity-70 cursor-not-allowed"
                     value={guest.Age}
-                    min="1"
-                    max="12"
-                    onChange={(e) => updateGuest(index, "Age", e.target.value)}
+                    readOnly
                   />
                 )}
 

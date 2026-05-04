@@ -63,8 +63,11 @@ export const useHotelStore = create((set) => ({
         ...state.search,
         ...searchData,
         guests: {
-          ...state.search.guests,
-          ...(searchData.guests || {}),
+          adults: searchData.guests?.adults ?? state.search.guests.adults,
+          children: searchData.guests?.children ?? state.search.guests.children,
+          childAges: Array.isArray(searchData.guests?.childAges)
+            ? searchData.guests.childAges.map(Number)
+            : state.search.guests.childAges,
         },
       },
     })),

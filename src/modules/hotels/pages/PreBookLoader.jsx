@@ -36,8 +36,25 @@ const PrebookLoader = () => {
 
     const prebook = async () => {
       try {
+        const safeGuests = {
+          adults: Number(guests?.adults || 0),
+          children: Number(guests?.children || 0),
+          childAges: Array.isArray(guests?.childAges)
+            ? guests.childAges.map(Number)
+            : [],
+        };
+
+        if (
+          safeGuests.children > 0 &&
+          safeGuests.childAges.length !== safeGuests.children
+        ) {
+          throw new Error("Child age missing. Please search again.");
+        }
+        console.log("PREBOOK SAFE GUESTS:", safeGuests);
+
         const res = await privateApi.post("/api/hotels/hotels/prebook/", {
           BookingCode: room.BookingCode,
+          guests: safeGuests,
         });
 
         const data = res.data;
@@ -50,10 +67,13 @@ const PrebookLoader = () => {
             state: {
               hotel,
               room: preBookedRoom,
-              preBook: preBookData,
+              preBook: {
+                ...preBookData,
+                childAges: safeGuests.childAges,
+              },
               checkIn,
               checkOut,
-              guests,
+              guests: safeGuests,
             },
           });
         } else {
@@ -66,9 +86,8 @@ const PrebookLoader = () => {
         console.log("STATUS:", statusCode);
         console.log("MESSAGE:", message);
 
-        // ✅ Proper auth detection
         if (
-          statusCode === 400 ||
+          statusCode === 401 ||
           message.toLowerCase().includes("auth") ||
           message.toLowerCase().includes("login") ||
           message.toLowerCase().includes("token")

@@ -150,8 +150,14 @@ const HotelBookingSuccess = () => {
               <h3 className="text-yellow-300 mb-3">Guests</h3>
 
               {guestDetails.map((g, i) => (
-                <div key={i} className="text-sm py-1">
-                  {g.FirstName} {g.LastName}
+                <div key={i} className="text-sm py-1 flex justify-between">
+                  <span>
+                    {g.FirstName} {g.LastName}
+                  </span>
+
+                  <span className="text-gray-400">
+                    {g.PaxType === 2 ? `Child • Age ${g.Age}` : "Adult"}
+                  </span>
                 </div>
               ))}
             </div>

@@ -62,6 +62,14 @@ const HotelResults = () => {
   /* ================= VIEW ================= */
   const handleView = useCallback(
     (hotel) => {
+      const safeGuests = {
+        adults: Number(guests?.adults || 0),
+        children: Number(guests?.children || 0),
+        childAges: Array.isArray(guests?.childAges)
+          ? guests.childAges.map(Number)
+          : [],
+      };
+
       setSelectedHotel({
         ...hotel.rawHotel,
         bookingCode: hotel.BookingCode,
@@ -76,14 +84,15 @@ const HotelResults = () => {
           },
           checkIn,
           checkOut,
-          guests,
+          guests: safeGuests,
         },
       });
     },
     [navigate, setSelectedHotel, checkIn, checkOut, guests],
   );
 
-  const totalGuests = (guests?.adults || 0) + (guests?.children || 0);
+  const totalGuests =
+    Number(guests?.adults || 0) + Number(guests?.children || 0);
 
   return (
     <div className="min-h-screen bg-[#0B0B0F] text-white">

@@ -25,17 +25,44 @@ const HotelDetails = () => {
       ? hotel.images
       : [hotel?.image || "https://via.placeholder.com/600"];
 
-  const totalGuests = (guests?.adults || 0) + (guests?.children || 0);
+  const totalGuests =
+    Number(guests?.adults || 0) + Number(guests?.children || 0);
 
   const formatPrice = (val) => Math.round(val || 0).toLocaleString("en-IN");
 
   const handlePreBook = () => {
     if (!room?.BookingCode) return alert("Invalid room");
 
+    const safeGuests = {
+      adults: Number(guests?.adults || 0),
+      children: Number(guests?.children || 0),
+      childAges: Array.isArray(guests?.childAges)
+        ? guests.childAges.map(Number)
+        : [],
+    };
+
+    console.log("DETAIL PAGE GUESTS:", safeGuests);
+
+    if (
+      safeGuests.children > 0 &&
+      (safeGuests.childAges.length !== safeGuests.children ||
+        safeGuests.childAges.some(
+          (age) => !Number.isFinite(age) || age < 1 || age > 12,
+        ))
+    ) {
+      return alert("Child age missing or invalid. Please search again.");
+    }
+
     setLoading(true);
 
     navigate("/prebook", {
-      state: { hotel, room, checkIn, checkOut, guests },
+      state: {
+        hotel,
+        room,
+        checkIn,
+        checkOut,
+        guests: safeGuests,
+      },
     });
   };
 
@@ -107,6 +134,12 @@ const HotelDetails = () => {
             <p className="mt-3 text-sm text-gray-400">
               📅 {checkIn} → {checkOut} • 👤 {totalGuests} Guests
             </p>
+
+            {Number(guests?.children || 0) > 0 && (
+              <p className="mt-1 text-sm text-yellow-300">
+                Child Age: {guests?.childAges?.join(", ")}
+              </p>
+            )}
           </div>
 
           {/* ROOM DETAILS */}

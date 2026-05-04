@@ -31,8 +31,9 @@ const HotelsForm = () => {
   });
 
   const [guests, setGuests] = useState({
-    adults: 2,
+    adults: 1,
     children: 0,
+    childAges: [], // ✅ ADD THIS
   });
 
   /* ================= CLICK OUTSIDE ================= */
@@ -71,6 +72,15 @@ const HotelsForm = () => {
 
       if (updated.adults < 1) updated.adults = 1;
 
+      // ✅ HANDLE CHILD AGES ARRAY
+      if (type === "children") {
+        if (value > 0) {
+          updated.childAges = [...(prev.childAges || []), ""]; // default age
+        } else {
+          updated.childAges = (prev.childAges || []).slice(0, -1);
+        }
+      }
+
       return updated;
     });
   };
@@ -94,6 +104,16 @@ const HotelsForm = () => {
       return setErrorMsg("Invalid dates");
     }
 
+    // ✅ CHILD AGE VALIDATION
+    if (guests.children > 0) {
+      if (
+        guests.childAges.length !== guests.children ||
+        guests.childAges.some((age) => !age)
+      ) {
+        return setErrorMsg("Please select all child ages");
+      }
+    }
+
     try {
       resetFlow();
       setLocalLoading(true);
@@ -106,6 +126,8 @@ const HotelsForm = () => {
           checkout: formData.checkOut,
           adults: guests.adults,
           children: guests.children,
+          child_ages:
+            guests.children > 0 ? guests.childAges.map(Number).join(",") : "",
           rooms: 1,
         },
       });
@@ -121,9 +143,16 @@ const HotelsForm = () => {
         return;
       }
 
-      setSearch({ ...formData, guests });
-      setHotels(hotelsData);
+      setSearch({
+        ...formData,
+        guests: {
+          adults: guests.adults,
+          children: guests.children,
+          childAges: guests.childAges.map(Number),
+        },
+      });
 
+      setHotels(hotelsData);
       navigate("/hotels");
     } catch (err) {
       console.error(err);
@@ -273,6 +302,32 @@ const HotelsForm = () => {
                   </button>
                 </div>
               </div>
+
+              {guests.children > 0 && (
+                <div className="space-y-2">
+                  <span className="text-sm">Child Age</span>
+
+                  {guests.childAges.map((age, index) => (
+                    <select
+                      key={index}
+                      value={age}
+                      onChange={(e) => {
+                        const updated = [...guests.childAges];
+                        updated[index] = Number(e.target.value);
+                        setGuests({ ...guests, childAges: updated });
+                      }}
+                      className="w-full h-10 rounded-lg bg-(--bg-secondary) border border-(--border-soft)"
+                    >
+                      <option value="">Select Age</option>
+                      {Array.from({ length: 12 }, (_, i) => i + 1).map((a) => (
+                        <option key={a} value={a}>
+                          {a} years
+                        </option>
+                      ))}
+                    </select>
+                  ))}
+                </div>
+              )}
 
               <button
                 type="button"
