@@ -5,27 +5,24 @@ import { blogs } from "../../data/blogs";
 const BlogSection = () => {
   return (
     <section className="relative py-20 bg-[var(--bg-main)] overflow-hidden">
-      {/* Background Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(248,222,130,0.12),transparent_35%)]" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Heading */}
         <div className="text-center mb-14">
           <p className="font-body text-sm md:text-base tracking-[0.3em] uppercase text-[var(--gold-soft)]">
-            Travel Blogs
+            FlyingLyte Blogs
           </p>
 
           <h2 className="mt-4 font-heading text-4xl md:text-6xl text-[var(--gold-main)]">
-            Latest Travel Guides
+            Latest Travel & Festival Guides
           </h2>
 
           <p className="mt-5 max-w-2xl mx-auto font-body text-lg text-[var(--text-muted)]">
-            Read hotel booking guides, travel tips and destination ideas for
-            your next journey.
+            Read festival updates, hotel booking guides, travel tips and
+            destination ideas for your next journey.
           </p>
         </div>
 
-        {/* Cards */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {blogs.slice(0, 3).map((blog) => (
             <article
@@ -36,6 +33,7 @@ const BlogSection = () => {
                 <img
                   src={blog.image}
                   alt={blog.title}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
 
@@ -73,7 +71,6 @@ const BlogSection = () => {
           ))}
         </div>
 
-        {/* Button */}
         <div className="text-center mt-14">
           <Link
             to="/blogs"

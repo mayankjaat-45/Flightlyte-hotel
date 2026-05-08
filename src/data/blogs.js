@@ -1,6 +1,48 @@
 export const blogs = [
   {
     id: 1,
+    slug: "why-you-need-to-know-7-things-about-tomorrowland-thailand",
+    title: "Why You Need to Know 7 Things About Tomorrowland Thailand",
+    category: "EDM Festivals",
+    author: "FlyingLyte Team",
+    date: "08 May 2026",
+    image:
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200",
+    shortDescription:
+      "Discover the 7 most important things about Tomorrowland Thailand 2026 including tickets, DJs, venue, tourism impact, and festival experience.",
+    description: `
+Did you know that Tomorrowland Thailand has become one of the most talked-about topics worldwide? Festival enthusiasts and international travelers are eagerly waiting for updates about Tomorrowland Thailand 2026.
+
+Here are 7 important things you need to know before the event.
+
+1. Tomorrowland Thailand Could Become Asia’s Largest EDM Festival  
+Tomorrowland is known for massive stage productions, stunning visuals, and world-class DJs. The Thailand edition could become the biggest EDM festival in Asia.
+
+2. Thailand Is an Ideal Festival Destination  
+Thailand attracts millions of tourists every year due to its beaches, nightlife, luxury resorts, and affordable travel options.
+
+3. Pattaya Is Expected to Be the Main Venue  
+Reports suggest Pattaya may host the event because of its strong tourism infrastructure, hotels, beaches, and entertainment options.
+
+4. International DJs Are Expected  
+Fans expect global EDM artists like Martin Garrix, David Guetta, and Armin van Buuren to perform at Tomorrowland Thailand 2026.
+
+5. Tickets May Sell Out Quickly  
+Tomorrowland tickets usually sell out within minutes worldwide. Early registration and updates are important.
+
+6. The Festival Could Boost Thailand Tourism  
+The event could generate huge tourism revenue through hotels, restaurants, nightlife, and travel services.
+
+7. Tomorrowland Is More Than Just Music  
+The festival includes fantasy-themed stages, fireworks, storytelling, food experiences, and immersive entertainment.
+
+Conclusion  
+Tomorrowland Thailand 2026 is shaping up to be one of the biggest EDM events in Asia. Staying updated will help fans prepare for tickets, travel, and festival planning.
+    `,
+  },
+
+  {
+    id: 2,
     slug: "best-hotels-for-family-vacation",
     title: "Best Hotels for a Family Vacation",
     category: "Hotels",
@@ -9,50 +51,13 @@ export const blogs = [
     image:
       "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200",
     shortDescription:
-      "Planning a family trip? Here are some useful tips for choosing the right hotel.",
+      "Planning a family trip? Here are useful tips for choosing the right hotel for comfort, safety, and convenience.",
     description: `
 Choosing the right hotel for a family vacation can make your trip more comfortable and memorable.
 
-Before booking, check room size, child-friendly facilities, breakfast options, cancellation policy and nearby attractions.
+Before booking, check room size, child-friendly facilities, breakfast options, cancellation policies, and nearby attractions.
 
-A good family hotel should offer comfort, safety and easy access to local travel spots.
-    `,
-  },
-  {
-    id: 2,
-    slug: "how-to-book-hotels-online-safely",
-    title: "How to Book Hotels Online Safely",
-    category: "Booking Tips",
-    author: "FlyingLyte Team",
-    date: "08 May 2026",
-    image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200",
-    shortDescription:
-      "Simple things to check before confirming your hotel booking online.",
-    description: `
-Online hotel booking is easy, but you should always check the final price, taxes, room type and cancellation rules.
-
-Also verify the hotel location, guest reviews and check-in/check-out timing.
-
-Always save your booking confirmation after payment.
-    `,
-  },
-  {
-    id: 3,
-    slug: "top-travel-tips-for-summer-holidays",
-    title: "Top Travel Tips for Summer Holidays",
-    category: "Travel",
-    author: "FlyingLyte Team",
-    date: "08 May 2026",
-    image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200",
-    shortDescription:
-      "Make your summer trip smoother with these simple travel planning tips.",
-    description: `
-Summer holidays are perfect for travel, but planning early helps you save money.
-
-Book hotels and flights in advance, carry light clothes, keep important documents ready and check the weather before travelling.
-
-Also compare hotel prices before booking.
+A good family hotel should offer comfort, safety, and easy access to local travel spots, ensuring a stress-free experience for everyone.
     `,
   },
 ];

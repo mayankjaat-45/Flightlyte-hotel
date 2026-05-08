@@ -6,7 +6,6 @@ const Blogs = () => {
   return (
     <main className="min-h-screen bg-[var(--bg-main)] text-white py-20">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Page Header */}
         <div className="text-center mb-14">
           <p className="font-body text-sm md:text-base tracking-[0.3em] uppercase text-[var(--gold-soft)]">
             FlyingLyte Blogs
@@ -17,12 +16,11 @@ const Blogs = () => {
           </h1>
 
           <p className="mt-5 max-w-2xl mx-auto font-body text-lg text-[var(--text-muted)]">
-            Helpful hotel guides, booking tips, destination ideas and travel
-            planning advice.
+            Helpful hotel guides, booking tips, festival updates, destination
+            ideas and travel planning advice.
           </p>
         </div>
 
-        {/* Blog Grid */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {blogs.map((blog) => (
             <article
@@ -33,6 +31,7 @@ const Blogs = () => {
                 <img
                   src={blog.image}
                   alt={blog.title}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
 
