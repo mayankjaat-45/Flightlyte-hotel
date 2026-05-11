@@ -40,24 +40,4 @@ Conclusion
 Tomorrowland Thailand 2026 is shaping up to be one of the biggest EDM events in Asia. Staying updated will help fans prepare for tickets, travel, and festival planning.
     `,
   },
-
-  {
-    id: 2,
-    slug: "best-hotels-for-family-vacation",
-    title: "Best Hotels for a Family Vacation",
-    category: "Hotels",
-    author: "FlyingLyte Team",
-    date: "08 May 2026",
-    image:
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200",
-    shortDescription:
-      "Planning a family trip? Here are useful tips for choosing the right hotel for comfort, safety, and convenience.",
-    description: `
-Choosing the right hotel for a family vacation can make your trip more comfortable and memorable.
-
-Before booking, check room size, child-friendly facilities, breakfast options, cancellation policies, and nearby attractions.
-
-A good family hotel should offer comfort, safety, and easy access to local travel spots, ensuring a stress-free experience for everyone.
-    `,
-  },
 ];
